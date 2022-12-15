@@ -1,7 +1,9 @@
+import React from "react";
 import Game from "./containers/Game";
 import Menu from "./containers/Menu";
 import Score from "./containers/Score";
 import { Routes, Route, Navigate } from "react-router-dom";
+import "./App.css";
 
 function App() {
   return (
