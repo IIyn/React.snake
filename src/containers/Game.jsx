@@ -257,9 +257,8 @@ const Game = () => {
           </form>
         </>
       ) : (
-        <>
+        <div id="game">
           <FocusTrap
-            id="game"
             focusTrapOptions={{
               fallbackFocus: "#canvas",
               clickOutisdeDeactivates: true,
@@ -269,10 +268,6 @@ const Game = () => {
               id="canvas"
               style={{
                 border: "1px solid #000",
-                position: "absolute",
-                top: "40%",
-                left: "50%",
-                transform: "translate(-50%, -50%)",
               }}
               width={CANVAS.width}
               height={CANVAS.height}
@@ -281,17 +276,8 @@ const Game = () => {
               onKeyDown={(e) => handleKeyDown(e)}
             />
           </FocusTrap>
-          <h2
-            style={{
-              position: "absolute",
-              top: "80%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-            }}
-          >
-            Score : {score}
-          </h2>
-        </>
+          <h2>Score : {score}</h2>
+        </div>
       )}
     </>
   );
