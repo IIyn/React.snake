@@ -12,9 +12,14 @@ const Game = () => {
   const [score, setScore] = useState(1);
   const [lastDirection, setLastDirection] = useState(null);
 
+  const [dimensions, setDimensions] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
+
   const CANVAS = {
-    width: 1000,
-    height: 800,
+    width: dimensions.width * 0.8,
+    height: dimensions.height * 0.9,
   };
 
   const SQUARE_SIZE = 20;
@@ -128,7 +133,7 @@ const Game = () => {
           checkCollision();
           checkFoodCollision();
           follow();
-          if (randomize(0, 100, 1) <= 20 && food.length <= 15) {
+          if (randomize(0, 100, 1) <= 40 && food.length <= 15) {
             spawnFood();
           }
         }, intervalSpeed)
@@ -220,7 +225,18 @@ const Game = () => {
       ctx.current.fillStyle = "green";
       ctx.current.fillRect(snake[0].x, snake[0].y, SQUARE_SIZE, SQUARE_SIZE);
     }
-  }, []);
+
+    const handleResize = () => {
+      setDimensions({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
+    window.addEventListener("resize", handleResize);
+    return (_) => {
+      window.removeEventListener("resize", handleResize);
+    };
+  });
 
   useEffect(() => {
     setIntervalSpeed(400 / score);
