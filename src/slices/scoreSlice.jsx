@@ -1,13 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  scoreData: [
-    {
-      id: 0,
-      name: "John",
-      points: 100,
-    },
-  ],
+  scoreData: JSON.parse(localStorage.getItem("score")) || [],
 };
 
 const scoreSlice = createSlice({
@@ -15,7 +9,17 @@ const scoreSlice = createSlice({
   initialState,
   reducers: {
     addScore: (state, action) => {
-      state.push(action.payload);
+      const { score } = action.payload;
+      if (score.name === "") {
+        score.name = "Unknown";
+      }
+      const updatedScore = [...state.scoreData];
+      updatedScore.push(score);
+      localStorage.setItem("score", JSON.stringify(updatedScore));
+      return {
+        ...state,
+        scoreData: updatedScore,
+      };
     },
   },
 });
