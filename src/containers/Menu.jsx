@@ -6,11 +6,11 @@ const Menu = () => {
   const navigate = useNavigate();
 
   return (
-    <>
-      <h1>Menu</h1>
+    <div className="basic-menu">
+      <h1>React.snake</h1>
       <button onClick={() => navigate("/game")}>Play</button>
       <button onClick={() => navigate("/score")}>Scores</button>
-    </>
+    </div>
   );
 };
 

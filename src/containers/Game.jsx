@@ -149,7 +149,7 @@ const Game = () => {
         setScore(score + 1);
         const tmpFood = food;
         tmpFood.splice(i, 1);
-        setFood(tmpFood)
+        setFood(tmpFood);
       }
     }
   }
@@ -251,8 +251,8 @@ const Game = () => {
   return (
     <>
       {gameOver ? (
-        <>
-          <h1>Game Over !!!</h1>
+        <div className="basic-menu">
+          <h1>Game Over</h1>
           <h2>Score {score}</h2>
           <form
             onSubmit={(e) => {
@@ -272,7 +272,7 @@ const Game = () => {
             />
             <input type="submit" value="Ajouter aux scores" />
           </form>
-        </>
+        </div>
       ) : (
         <div id="game">
           <FocusTrap
