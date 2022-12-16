@@ -133,7 +133,7 @@ const Game = () => {
           checkCollision();
           checkFoodCollision();
           follow();
-          if (randomize(0, 100, 1) <= 40 && food.length <= 15) {
+          if (randomize(0, 100, 1) <= 70 && food.length <= 15) {
             spawnFood();
           }
         }, intervalSpeed)
@@ -239,7 +239,7 @@ const Game = () => {
   });
 
   useEffect(() => {
-    setIntervalSpeed(400 / score);
+    setIntervalSpeed(400 / (score/2));
     if (food.length <= 15) {
       for (let index = 0; index < randomize(1, 5, 1); index++) {
         spawnFood();
