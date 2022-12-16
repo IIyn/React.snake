@@ -158,9 +158,9 @@ const Game = () => {
     const snakeHead = snake[0];
     if (
       snakeHead.x < 0 ||
-      snakeHead.x > CANVAS.width ||
+      snakeHead.x + SQUARE_SIZE > CANVAS.width ||
       snakeHead.y < 0 ||
-      snakeHead.y > CANVAS.height ||
+      snakeHead.y + SQUARE_SIZE > CANVAS.height ||
       snake.filter((s) => s.x === snakeHead.x && s.y === snakeHead.y).length > 1
     ) {
       clearInterval(intervalId);
@@ -240,7 +240,7 @@ const Game = () => {
   });
 
   useEffect(() => {
-    setIntervalSpeed(400 / (score+1/2));
+    setIntervalSpeed(400 / (score + 1 / 2));
     if (food.length <= 15) {
       for (let index = 0; index < randomize(1, 5, 1); index++) {
         spawnFood();
