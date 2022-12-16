@@ -18,8 +18,8 @@ const Game = () => {
   });
 
   const CANVAS = {
-    width: dimensions.width * 0.8,
-    height: dimensions.height * 0.9,
+    width: Math.floor((dimensions.width * 0.8) / 20) * 20,
+    height: Math.floor((dimensions.height * 0.9) / 20) * 20,
   };
 
   const SQUARE_SIZE = 20;
