@@ -9,7 +9,7 @@ const Game = () => {
   const dispatch = useDispatch();
 
   const [name, setName] = useState("");
-  const [score, setScore] = useState(1);
+  const [score, setScore] = useState(0);
   const [lastDirection, setLastDirection] = useState(null);
 
   const [dimensions, setDimensions] = useState({
@@ -149,6 +149,7 @@ const Game = () => {
         setScore(score + 1);
         const tmpFood = food;
         tmpFood.splice(i, 1);
+        setFood(tmpFood)
       }
     }
   }
