@@ -9,8 +9,8 @@ const Score = () => {
   const scoreData = useSelector(selectScore);
 
   return (
-    <>
-      <h1>Score</h1>
+    <div className="basic-menu">
+      <h1>Scores</h1>
       <ul>
         {scoreData.map((score) => (
           <li key={score.id}>
@@ -19,7 +19,7 @@ const Score = () => {
         ))}
       </ul>
       <button onClick={() => navigate("/")}>Retourner a l'accueil</button>
-    </>
+    </div>
   );
 };
 
