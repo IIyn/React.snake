@@ -1,8 +1,12 @@
 import React, { useRef, useEffect, useState } from "react";
 import FocusTrap from "focus-trap-react";
+import { useSound } from "use-sound";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addScore } from "../slices/scoreSlice";
+
+import eatSound from "../assets/sounds/eat.wav";
+import appleSpawnSound from "../assets/sounds/appleSpawn.wav";
 
 const Game = () => {
   const navigate = useNavigate();
@@ -11,6 +15,9 @@ const Game = () => {
   const [name, setName] = useState("");
   const [score, setScore] = useState(1);
   const [lastDirection, setLastDirection] = useState(null);
+
+  const [eat] = useSound(eatSound);
+  const [appleSpawn] = useSound(appleSpawnSound);
 
   const [dimensions, setDimensions] = useState({
     width: window.innerWidth,
@@ -26,8 +33,8 @@ const Game = () => {
 
   const [snake, setSnake] = useState([
     {
-      x: Math.floor((dimensions.width *0.4) / 20) * 20,
-      y: Math.floor((dimensions.height *0.45) / 20) * 20,
+      x: Math.floor((dimensions.width * 0.4) / 20) * 20,
+      y: Math.floor((dimensions.height * 0.45) / 20) * 20,
       lastPosition: {
         x: 0,
         y: 0,
@@ -133,6 +140,7 @@ const Game = () => {
           follow();
           if (randomize(0, 100, 1) <= 70 && food.length <= 15) {
             spawnFood();
+            appleSpawn();
           }
         }, intervalSpeed)
       );
@@ -148,6 +156,7 @@ const Game = () => {
         const tmpFood = food;
         tmpFood.splice(i, 1);
         setFood(tmpFood);
+        eat();
       }
     }
   }
@@ -243,6 +252,7 @@ const Game = () => {
       for (let index = 0; index < randomize(1, 5, 1); index++) {
         spawnFood();
       }
+      appleSpawn();
     }
   }, [score]);
 
