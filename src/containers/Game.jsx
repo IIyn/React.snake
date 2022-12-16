@@ -118,15 +118,13 @@ const Game = () => {
             default:
               break;
           }
-          ctx.current.fillStyle = "green";
+          ctx.current.fillStyle = "purple";
           ctx.current.fillRect(
             snakeHead.x,
             snakeHead.y,
             SQUARE_SIZE,
             SQUARE_SIZE
           );
-          tmpSnake[0].lastPosition.x = tmpSnake[0].x;
-          tmpSnake[0].lastPosition.y = tmpSnake[0].y;
           tmpSnake[0].x = snakeHead.x;
           tmpSnake[0].y = snakeHead.y;
           setSnake(tmpSnake);
@@ -223,7 +221,7 @@ const Game = () => {
   useEffect(() => {
     if (canvasRef.current) {
       ctx.current = canvasRef.current.getContext("2d");
-      ctx.current.fillStyle = "green";
+      ctx.current.fillStyle = "purple";
       ctx.current.fillRect(snake[0].x, snake[0].y, SQUARE_SIZE, SQUARE_SIZE);
     }
 
