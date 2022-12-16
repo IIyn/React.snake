@@ -182,7 +182,7 @@ const Game = () => {
   function spawnFood() {
     const tmpFood = {
       x: randomize(0, CANVAS.width, SQUARE_SIZE),
-      y: randomize(0, CANVAS.width, SQUARE_SIZE),
+      y: randomize(0, CANVAS.height, SQUARE_SIZE),
     };
     const tmpFoodArray = food;
     tmpFoodArray.push(tmpFood);
