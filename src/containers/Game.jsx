@@ -9,7 +9,7 @@ const Game = () => {
   const dispatch = useDispatch();
 
   const [name, setName] = useState("");
-  const [score, setScore] = useState(0);
+  const [score, setScore] = useState(1);
   const [lastDirection, setLastDirection] = useState(null);
 
   const [dimensions, setDimensions] = useState({
@@ -240,7 +240,7 @@ const Game = () => {
   });
 
   useEffect(() => {
-    setIntervalSpeed(400 / (score + 1 / 2));
+    setIntervalSpeed(400 / (score / 2));
     if (food.length <= 15) {
       for (let index = 0; index < randomize(1, 5, 1); index++) {
         spawnFood();
