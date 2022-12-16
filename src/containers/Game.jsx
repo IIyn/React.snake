@@ -26,8 +26,8 @@ const Game = () => {
 
   const [snake, setSnake] = useState([
     {
-      x: 200,
-      y: 300,
+      x: Math.floor((dimensions.width *0.4) / 20) * 20,
+      y: Math.floor((dimensions.height *0.45) / 20) * 20,
       lastPosition: {
         x: 0,
         y: 0,
